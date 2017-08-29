@@ -1,13 +1,10 @@
-import React, { PureComponent } from 'react';
-import { FormattedMessage } from 'react-intl';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import messages from './contant.messages';
-
-export class ContactContainer extends PureComponent {
+export class ContactContainer extends Component {
   render() {
     return (
-      <FormattedMessage {...messages.contact} />
+      <div>Contact</div>
     );
   }
 }

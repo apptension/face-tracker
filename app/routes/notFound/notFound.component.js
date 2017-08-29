@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
 
-export class NotFound extends PureComponent {
+export class NotFound extends Component {
   render() {
     return (
       <div className="not-found">

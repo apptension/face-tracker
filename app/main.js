@@ -79,22 +79,7 @@ const render = () => {
   );
 };
 
-// Chunked polyfill for browsers without Intl support
-if (!window.Intl) {
-  (new Promise((resolve) => {
-    resolve(require('intl'));
-  }))
-    .then(() => Promise.all([
-      require('intl/locale-data/jsonp/en.js'),
-      require('intl/locale-data/jsonp/de.js'),
-    ]))
-    .then(() => render())
-    .catch((err) => {
-      throw err;
-    });
-} else {
-  render();
-}
+render();
 
 /* istanbul ignore next */
 if (module.hot) {

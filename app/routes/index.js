@@ -1,33 +1,28 @@
-import React, { PureComponent } from 'react';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
-import { DEFAULT_LOCALE } from '../modules/locales/locales.redux';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 import App from './app.container';
 import Contact from './contact';
 import Home from './home';
 import NotFound from './notFound';
 
-export class RootContainer extends PureComponent {
+export class RootContainer extends Component {
+  static propTypes = {
+    location: PropTypes.object.isRequired,
+  };
+
   render() {
     return (
-      <Switch>
-        <Route exact path="/" render={() => <Redirect to={DEFAULT_LOCALE} />} />
+      <App location={this.props.location}>
+        <Switch>
+          <Route exact path="/" component={Home} />
 
+          <Route path="/contact" component={Contact} />
 
-        <Route exact path="/404" component={NotFound} />
-
-        <Route path="/:lang">
-          <App>
-            <Switch>
-              <Route exact path="/:lang" component={Home} />
-
-              <Route exact path="/:lang/contact" component={Contact} />
-
-              <Route component={NotFound} />
-            </Switch>
-          </App>
-        </Route>
-      </Switch>
+          <Route component={NotFound} />
+        </Switch>
+      </App>
     );
   }
 }

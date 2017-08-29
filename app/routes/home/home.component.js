@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import envConfig from 'env-config';
 import { Link } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import messages from './home.messages';
 import { LanguageSelector } from './languageSelector/languageSelector.component';
@@ -35,6 +36,11 @@ export class Home extends PureComponent {
         <div>
           <Link to={`${this.props.match.url}/contact`}>Contact</Link>
         </div>
+
+        <RaisedButton
+          label="Click me"
+          primary
+        />
 
         <LanguageSelector
           language={this.props.language}

@@ -17,6 +17,7 @@ import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter } from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontFaceObserver from 'fontfaceobserver';
 import 'normalize.css/normalize.css';
 import './main.scss';
@@ -67,9 +68,11 @@ const render = () => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <ConnectedRouter history={browserHistory}>
-          <NextApp />
-        </ConnectedRouter>
+        <MuiThemeProvider>
+          <ConnectedRouter history={browserHistory}>
+            <NextApp />
+          </ConnectedRouter>
+        </MuiThemeProvider>
       </Provider>
     </AppContainer>,
     document.getElementById('app')

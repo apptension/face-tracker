@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import RaisedButton from 'material-ui/RaisedButton';
+
+import { Stepper } from './stepper/stepper.component';
 
 export class Home extends Component {
   static propTypes = {};
@@ -8,14 +8,7 @@ export class Home extends Component {
   render() {
     return (
       <div className="home">
-        <div>
-          <Link to="/contact">Contact</Link>
-        </div>
-
-        <RaisedButton
-          label="Click me"
-          primary
-        />
+        <Stepper />
       </div>
     );
   }

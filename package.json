@@ -82,6 +82,7 @@
     "compression": "1.7.0",
     "cross-env": "5.0.1",
     "express": "4.15.3",
+    "firebase": "^4.3.0",
     "fontfaceobserver": "2.0.13",
     "history": "^4.6.3",
     "immutable": "3.8.1",

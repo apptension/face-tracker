@@ -7,7 +7,6 @@ import Helmet from 'react-helmet';
 
 import { Home } from '../home.component';
 import messages from '../home.messages';
-import { MaintainerList } from '../maintainerList/maintainerList.component';
 import { LanguageSelector } from '../languageSelector/languageSelector.component';
 
 
@@ -51,16 +50,6 @@ describe('Home: Component', () => {
   it('should render welcome message inside .home__title', () => {
     const wrapper = shallow(component({}));
     expect(wrapper.find('.home__title').find(FormattedMessage).prop('id')).to.equal(messages.welcome.id);
-  });
-
-  it('should render <MaintainerList />', () => {
-    const wrapper = shallow(component({}));
-    expect(wrapper.find(MaintainerList)).to.have.length(1);
-  });
-
-  it('should pass items prop to <MaintainerList />', () => {
-    const wrapper = shallow(component({}));
-    expect(wrapper.find(MaintainerList).prop('items')).to.equal(defaultProps.items);
   });
 
   it('should render <LanguageSelector />', () => {

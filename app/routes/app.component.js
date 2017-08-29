@@ -25,9 +25,7 @@ export class App extends Component {
         <Helmet
           titleTemplate="%s - Apptension Face Tracker"
           defaultTitle="Apptension Face Tracker"
-          meta={[
-            { name: 'description', content: 'Apptension Face Tracker application' },
-          ]}
+          meta={[{ name: 'description', content: 'Apptension Face Tracker application' }]}
         />
 
         <AppBar

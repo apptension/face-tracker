@@ -6,6 +6,7 @@ import App from './app.container';
 import Contact from './contact';
 import Home from './home';
 import NotFound from './notFound';
+import Register from './register';
 
 export class RootContainer extends Component {
   static propTypes = {

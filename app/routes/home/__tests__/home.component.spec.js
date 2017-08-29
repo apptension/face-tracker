@@ -70,21 +70,4 @@ describe('Home: Component', () => {
     languageSelectorProps.setLanguage();
     expect(setLanguage.calledOnce).to.be.true;
   });
-
-  it('should dispatch fetchMaintainers action on mount', () => {
-    const fetchMaintainers = spy();
-    shallow(component({ fetchMaintainers }));
-
-    expect(fetchMaintainers.firstCall.args[0]).to.equal(defaultProps.language);
-  });
-
-  it('should dispatch fetchMaintainers action on language change', () => {
-    const fetchMaintainers = spy();
-    const newLanguage = 'de';
-    const wrapper = shallow(component({ fetchMaintainers, language: 'en' }));
-    fetchMaintainers.reset();
-    wrapper.setProps({ language: newLanguage });
-
-    expect(fetchMaintainers.firstCall.args[0]).to.equal(newLanguage);
-  });
 });

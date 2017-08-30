@@ -1,12 +1,13 @@
 import React from 'react';
 import Webcam from 'react-webcam';
+import CircularProgress from 'material-ui/CircularProgress';
 
 import { CountDown } from './countDown/countDown.component';
 
 export class WebcamCapture extends React.Component {
   state = {
     isWebcamReady: false,
-    isCountDownFinished: false,
+    imageSrc: null,
   };
 
   setRef = (webcam) => {
@@ -17,29 +18,40 @@ export class WebcamCapture extends React.Component {
     this.setState({ isWebcamReady: true });
   };
 
-  capture = () => {
-    const imageSrc = this.webcam.getScreenshot();
-    this.setState({ isCountDownFinished: true });
-    console.log(imageSrc);
-  };
+  capture = () => this.setState({ imageSrc: this.webcam.getScreenshot() });
 
   width = window.innerWidth - 20;
   height = this.width * 0.75;
 
+
+  get isCountDownVisible() {
+    return this.state.isWebcamReady && !this.state.imageSrc;
+  }
+
   render() {
     return (
       <div className="webcam-container">
-        <Webcam
-          audio={false}
-          ref={(node) => { this.webcam = node; }}
-          onUserMedia={this.handleUserMedia}
-          width={this.width}
-          height={this.height}
-        />
+        {!this.state.imageSrc ?
+          <Webcam
+            audio={false}
+            ref={(node) => { this.webcam = node; }}
+            onUserMedia={this.handleUserMedia}
+            width={this.width}
+            height={this.height}
+          /> :
+          null
+        }
 
-        {this.state.isWebcamReady && !this.state.isCountDownFinished ?
-          <CountDown onFinished={this.capture} /> :
-          null}
+        {this.isCountDownVisible ? <CountDown onFinished={this.capture} /> : null}
+
+        {this.state.imageSrc ?
+          <div className="progress">
+            <CircularProgress size={100} thickness={5} />
+          </div> :
+          null
+        }
+
+        {this.state.imageSrc ? <img src={this.state.imageSrc} /> : null}
       </div>
     );
   }

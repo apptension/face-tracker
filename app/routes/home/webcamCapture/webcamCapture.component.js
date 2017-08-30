@@ -1,10 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Webcam from 'react-webcam';
 import CircularProgress from 'material-ui/CircularProgress';
 
 import { CountDown } from './countDown/countDown.component';
 
 export class WebcamCapture extends React.Component {
+  static propTypes = {
+    onCapture: PropTypes.func.isRequired,
+  };
+
   state = {
     isWebcamReady: false,
     imageSrc: null,
@@ -18,7 +23,11 @@ export class WebcamCapture extends React.Component {
     this.setState({ isWebcamReady: true });
   };
 
-  capture = () => this.setState({ imageSrc: this.webcam.getScreenshot() });
+  capture = () => {
+    const imageSrc = this.webcam.getScreenshot();
+    this.setState({ imageSrc });
+    this.props.onCapture(imageSrc);
+  };
 
   width = window.innerWidth - 20;
   height = this.width * 0.75;

@@ -10,6 +10,7 @@
     "chai-friendly"
   ],
   "rules": {
+    "no-console": ["error", { "allow": ["warn", "error"] }],
     "new-cap": [2, { "capIsNewExceptions": ["List", "Map"] }],
     "babel/new-cap": [2, { "capIsNewExceptions": ["List", "Map"] }],
     "redux-saga/yield-effects": 0, // https://github.com/pke/eslint-plugin-redux-saga/issues/15

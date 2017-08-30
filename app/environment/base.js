@@ -8,4 +8,9 @@ export default {
     messagingSenderId: '230469556144',
   },
   firebaseEnableLogging: true,
+  kairos: {
+    url: 'https://private-anon-b1bdc5f7de-kairos.apiary-mock.com',
+    appId: '4985f625',
+    appKey: 'aa9e5d2ec3b00306b2d9588c3a25d68e',
+  },
 };

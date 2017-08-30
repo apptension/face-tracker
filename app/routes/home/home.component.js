@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { WebcamCapture } from './webcamCapture/webcamCapture.component';
 
 export class Home extends Component {
-  static propTypes = {};
+  static propTypes = {
+    recognize: PropTypes.func.isRequired,
+  };
 
   render() {
     return (
       <div className="home">
-        <WebcamCapture />
+        <WebcamCapture onCapture={this.props.recognize} />
       </div>
     );
   }

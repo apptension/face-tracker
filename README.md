@@ -1,6 +1,7 @@
 # Face Tracker
 
 Example of using [Kairos](https://www.kairos.com/) face recognition technology.
+Link to project [page](https://apptension.github.io/face-tracker/).
 
 ## Quick start
 
@@ -117,6 +118,14 @@ Preps your app for deployment (does not run tests). Optimizes and minifies all f
 Upload the contents of `build` to your web server to
 see your work live!
 
+#### Publishing
+
+To publish project:
+
+```Shell
+npm run push-dir
+```
+
 #### Testing
 
 ```Shell
@@ -154,13 +163,6 @@ npm run lint
 
 Lints your JavaScript.
 
-#### Messages
-
-```Shell
-npm run extract-intl
-```
-
-Automatically generates `.json` files with messages gathered from application.
 
 ## License
 

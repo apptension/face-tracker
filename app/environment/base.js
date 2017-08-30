@@ -7,7 +7,7 @@ export default {
     storageBucket: 'facetracker-98a90.appspot.com',
     messagingSenderId: '230469556144',
   },
-  firebaseEnableLogging: true,
+  firebaseEnableLogging: false,
   kairos: {
     url: 'https://private-anon-b1bdc5f7de-kairos.apiary-mock.com',
     appId: '4985f625',

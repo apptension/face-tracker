@@ -1,0 +1,17 @@
+.count-down {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.count-down__text {
+  width: 110px;
+  text-align: center;
+  font-size: 100px;
+  color: white;
+  border-radius: 50%;
+  border-width: 2px;
+  border-color: white;
+  border-style: solid;
+}

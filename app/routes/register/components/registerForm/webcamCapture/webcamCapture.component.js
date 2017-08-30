@@ -1,10 +1,13 @@
 import React from 'react';
 import Webcam from 'react-webcam';
+import Measure from 'react-measure';
 
 export class WebcamCapture extends React.Component {
   state = {
     isWebcamReady: false,
     imageSrc: null,
+    width: 0,
+    height: 0,
   };
 
   handleUserMedia = () => {
@@ -13,25 +16,28 @@ export class WebcamCapture extends React.Component {
 
   capture = () => this.setState({ imageSrc: this.webcam.getScreenshot() });
 
+  handleResize = ({ bounds: { width } }) => this.setState({
+    width,
+    height: width * 0.75,
+  });
+
   render() {
     return (
-      <div className="webcam__container">
-        {!this.state.imageSrc ?
-          <Webcam
-            audio={false}
-            ref={(node) => { this.webcam = node; }}
-            onUserMedia={this.handleUserMedia}
-            style={{
-              width: '100%',
-              maxWidth: 500,
-              height: 'auto',
-            }}
-          /> :
-          null
-        }
+      <Measure bounds onResize={this.handleResize}>
+        {({ measureRef }) => (
+          <div ref={measureRef} className="register-webcam__container">
+            <Webcam
+              audio={false}
+              ref={(node) => { this.webcam = node; }}
+              onUserMedia={this.handleUserMedia}
+              width={this.state.width}
+              height={this.state.height}
+            />
 
-        <div className="webcam__circle" />
-      </div>
+            <div className="register-webcam__circle" />
+          </div>
+        )}
+      </Measure>
     );
   }
 }

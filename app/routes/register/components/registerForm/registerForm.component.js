@@ -2,63 +2,6 @@ import React, { Component } from 'react';
 import { RaisedButton, FlatButton, TextField, Stepper, Step, StepLabel, StepContent, GridList, GridTile } from 'material-ui';
 import { WebcamCapture } from './webcamCapture/webcamCapture.component';
 
-const styles = {
-  root: {
-    maxWidth: 500,
-    width: '100%',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  gridList: {
-    display: 'flex',
-    flexWrap: 'nowrap',
-    overflowX: 'auto',
-  },
-  titleStyle: {
-    color: 'rgb(0, 188, 212)',
-  },
-};
-
-const tilesData = [
-  {
-    img: 'https://www.w3schools.com/css/img_fjords.jpg',
-    title: 'Breakfast',
-    author: 'jill111',
-  },
-  {
-    img: 'https://www.w3schools.com/css/img_fjords.jpg',
-    title: 'Tasty burger',
-    author: 'pashminu',
-  },
-  {
-    img: 'https://www.w3schools.com/css/img_fjords.jpg',
-    title: 'Camera',
-    author: 'Danson67',
-  },
-  {
-    img: 'https://www.w3schools.com/css/img_fjords.jpg',
-    title: 'Morning',
-    author: 'fancycrave1',
-  },
-  {
-    img: 'https://www.w3schools.com/css/img_fjords.jpg',
-    title: 'Hats',
-    author: 'Hans',
-  },
-  {
-    img: 'https://www.w3schools.com/css/img_fjords.jpg',
-    title: 'Honey',
-    author: 'fancycravel',
-  },
-  {
-    img: 'https://www.w3schools.com/css/img_fjords.jpg',
-  },
-  {
-    img: 'https://www.w3schools.com/css/img_fjords.jpg',
-  },
-];
-
 export class RegisterForm extends Component {
   state = {
     stepIndex: 0,
@@ -142,17 +85,8 @@ export class RegisterForm extends Component {
         </Step>
         <Step>
           <StepLabel>Add photos</StepLabel>
-          <StepContent>
+          <StepContent style={{ minWidth: 250 }}>
             <WebcamCapture />
-            <div style={styles.root}>
-              <GridList style={styles.gridList} cols={2.2}>
-                {tilesData.map((tile, index) => (
-                  <GridTile key={index}>
-                    <img src={tile.img} />
-                  </GridTile>
-                ))}
-              </GridList>
-            </div>
 
             {this.renderStepActions(1)}
           </StepContent>

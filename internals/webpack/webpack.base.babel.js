@@ -120,6 +120,7 @@ module.exports = (options) => {
         },
       }),
       new webpack.NamedModulesPlugin(),
+      new webpack.IgnorePlugin(/\.\/locale$/),
     ]),
     resolve: {
       alias: {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Stepper } from './stepper/stepper.component';
+import { WebcamCapture } from './webcamCapture/webcamCapture.component';
 
 export class Home extends Component {
   static propTypes = {};
@@ -8,7 +8,7 @@ export class Home extends Component {
   render() {
     return (
       <div className="home">
-        <Stepper />
+        <WebcamCapture />
       </div>
     );
   }

@@ -12,14 +12,19 @@ export class App extends Component {
     children: PropTypes.node,
   };
 
+  static contextTypes = {
+    router: PropTypes.object.isRequired,
+  };
+
   renderLeftIcon = () => (
     <IconMenu iconButtonElement={<IconButton><MenuIcon color="white" /></IconButton>}>
       <MenuItem primaryText="Face Tracker" />
-      <MenuItem primaryText="Add new user" />
+      <MenuItem primaryText="Add new user" onClick={() => this.context.router.history.push('/register')} />
     </IconMenu>
   );
 
   render() {
+    console.log(this.context);
     return (
       <div>
         <Helmet

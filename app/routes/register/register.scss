@@ -1,7 +1,7 @@
 @import "components/registerForm/registerForm";
 
 .register {
-  min-height: 100vh;
+  height: calc(100vh - 64px);
   width: 100%;
   display: flex;
   flex-direction: column;

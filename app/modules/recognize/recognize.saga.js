@@ -1,7 +1,7 @@
-import { takeLatest } from 'redux-saga/effects';
+import { takeLatest, put } from 'redux-saga/effects';
 import moment from 'moment';
 
-import { RecognizeTypes } from './recognize.contants';
+import { RecognizeTypes, RecognizeActions } from './recognize.contants';
 import { recognize } from '../../services/kairos';
 import { workingHoursRef, usersRef } from '../utils/refs';
 
@@ -22,16 +22,22 @@ function* saveWorkingHours(userId) {
     const now = moment();
     const userTimeRef = workingHoursRef.child(now.format(DATE_FORMAT)).child(userId);
 
-    const { startTime } = (yield userTimeRef.once('value')).val();
+    const { startTime } = (yield userTimeRef.once('value')).val() || {};
 
     if (!startTime) {
       yield userTimeRef.child('startTime').set(now.unix());
+
+      return { startTime: now.unix() };
     }
 
     yield userTimeRef.child('endTime').set(now.unix());
+
+    return { startTime, endTime: now.unix() };
   } catch (error) {
     console.error(error);
   }
+
+  return null;
 }
 
 function* updateTime({ transaction: { subject_id: userId } }) {
@@ -42,7 +48,9 @@ function* updateTime({ transaction: { subject_id: userId } }) {
       throw new Error('No user in database');
     }
 
-    yield saveWorkingHours(userId);
+    const workingHours = yield saveWorkingHours(userId);
+
+    yield put(RecognizeActions.successRecognition({ ...user, ...workingHours }));
   } catch (error) {
     console.error(error);
   }
@@ -53,11 +61,10 @@ function* recognizePerson({ image }) {
     const { images, Errors } = yield recognize({ image });
 
     if (Errors) {
-      console.error(Errors);
-      return;
+      yield put(RecognizeActions.failureRecognition(Errors));
+    } else {
+      yield images.map(updateTime);
     }
-
-    yield images.map(updateTime);
   } catch (error) {
     console.error(error);
   }

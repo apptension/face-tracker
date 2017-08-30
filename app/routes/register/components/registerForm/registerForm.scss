@@ -1,0 +1,40 @@
+.register__form {
+  position: relative;
+  width: calc(100% - 40px);
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.register__form-item-wrapper {
+  margin-bottom: 10px;
+}
+
+.register__form-input {
+  width: 100% !important;
+
+  & > input {
+    width: 100%;
+  }
+}
+
+.register__form-upload {
+  margin-bottom: 0px;
+}
+
+.register__button--submit {
+  margin-bottom: 10px;
+}
+
+.register__upload-button {
+  width: 100%;
+}
+
+.register__upload-input {
+  width: 0;
+  opacity: 0;
+
+  &:focus {
+    outline: 0;
+  }
+}

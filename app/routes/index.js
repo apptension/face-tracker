@@ -21,6 +21,8 @@ export class RootContainer extends Component {
 
           <Route path="/contact" component={Contact} />
 
+          <Route path="/register" component={Register} />
+
           <Route component={NotFound} />
         </Switch>
       </App>

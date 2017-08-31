@@ -13,4 +13,5 @@ export default {
     appId: '4985f625',
     appKey: 'aa9e5d2ec3b00306b2d9588c3a25d68e',
   },
+  basePath: '',
 };

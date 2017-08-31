@@ -123,7 +123,7 @@ module.exports = (options) => {
     ]),
     resolve: {
       alias: {
-        'env-config': path.join(process.cwd(), 'app', 'environment', `${process.env.ENV_CONFIG || 'development'}.js`),
+        'env-config': path.join(process.cwd(), 'app', 'environment', `${process.env.NODE_ENV}.js`),
       },
       modules: ['app', 'node_modules'],
       extensions: [

@@ -123,7 +123,7 @@ see your work live!
 To publish project:
 
 ```Shell
-npm run push-dir
+npm run deploy
 ```
 
 #### Testing

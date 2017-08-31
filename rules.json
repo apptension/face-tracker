@@ -1,0 +1,40 @@
+{
+  "rules": {
+    "users": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$userId": {
+        "firstName": {
+          ".validate": "newData.isString()"
+        },
+        "lastName": {
+          ".validate": "newData.isString()"
+        },
+        "email": {
+          ".validate": "newData.isString()"
+        },
+        "$other": {
+          ".validate": "false"
+        }
+      }
+    },
+    "workingHours": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$date": {
+        "$userId": {
+          ".validate": "root.child('users').child($userId).exists()",
+          "startTime": {
+            ".validate": "newData.isNumber()"
+          },
+          "endTime": {
+            ".validate": "newData.isNumber()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@ import {
 } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 import { WebcamCapture } from './webcamCapture/webcamCapture.component';
 
@@ -112,10 +113,22 @@ export class Home extends Component {
               {this.renderContent()}
 
               <RaisedButton
+                className="button"
                 primary
                 label="Next try"
                 onClick={this.handleNextTry}
               />
+
+              {this.props.errors ?
+                <Link to="/register">
+                  <RaisedButton
+                    className="button"
+                    primary
+                    label="Register"
+                  />
+                </Link> :
+                null
+              }
             </StepContent>
           </Step>
         </Stepper>

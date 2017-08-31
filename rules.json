@@ -22,7 +22,6 @@
       ".read": "auth != null",
       ".write": "auth != null",
       "$date": {
-        ".validate": "newData.isNumber()",
         "$userId": {
           ".validate": "root.child('users').child($userId).exists()",
           "startTime": {

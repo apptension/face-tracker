@@ -5,4 +5,7 @@ export const {
   Creators: RecognizeActions,
 } = createActions({
   requestRecognition: ['image'],
+  successRecognition: ['user'],
+  failureRecognition: ['errors'],
+  resetUser: [],
 }, { prefix: 'RECOGNIZE/' });

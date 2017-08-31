@@ -7,14 +7,11 @@ const RouterRecord = new Record({
   locationBeforeTransitions: null,
 });
 
-export const INITIAL_STATE = new RouterRecord({});
+const INITIAL_STATE = new RouterRecord();
 
-export const locationChangeHandler = (state = INITIAL_STATE, action) => state.merge({
-  locationBeforeTransitions: action.payload,
-});
+export const locationChangeHandler = (state, action) => state
+  .set('locationBeforeTransitions', action.payload);
 
-export const HANDLERS = {
+export const reducer = createReducer(INITIAL_STATE, {
   [LOCATION_CHANGE]: locationChangeHandler,
-};
-
-export const reducer = createReducer(INITIAL_STATE, HANDLERS);
+});

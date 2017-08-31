@@ -29,7 +29,7 @@ export class WebcamCapture extends React.Component {
     this.props.onCapture(imageSrc);
   };
 
-  width = window.innerWidth - 20;
+  width = (window.innerWidth < 640 ? window.innerWidth : 640) - 20;
   height = this.width * 0.75;
 
 
@@ -39,7 +39,7 @@ export class WebcamCapture extends React.Component {
 
   render() {
     return (
-      <div className="webcam-container">
+      <div className="webcam-container" style={{ width: this.width, height: this.height }}>
         {!this.state.imageSrc ?
           <Webcam
             audio={false}

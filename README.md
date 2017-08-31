@@ -7,7 +7,7 @@ Link to project [page](https://apptension.github.io/face-tracker/).
 
 1. Clone this repo using:
   ```shell
-  $ git clone --depth=1 https://github.com/apptension/react-boilerplate.git
+  $ git clone --depth=1 git@github.com:apptension/face-tracker.git
   ```
 
 2. To install dependencies and clean the git repo run:

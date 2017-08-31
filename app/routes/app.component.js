@@ -6,16 +6,18 @@ import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
+import config from 'env-config';
 
 export class App extends Component {
   static propTypes = {
     children: PropTypes.node,
+    history: PropTypes.object.isRequired,
   };
 
   renderLeftIcon = () => (
     <IconMenu iconButtonElement={<IconButton><MenuIcon color="white" /></IconButton>}>
-      <MenuItem primaryText="Face Tracker" />
-      <MenuItem primaryText="Add new user" />
+      <MenuItem primaryText="Face Tracker" onClick={() => this.props.history.push(`${config.basePath}/`)} />
+      <MenuItem primaryText="Add new user" onClick={() => this.props.history.push(`${config.basePath}/register`)} />
     </IconMenu>
   );
 

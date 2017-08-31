@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import config from 'env-config';
 
 import App from './app.container';
-import Contact from './contact';
 import Home from './home';
 import NotFound from './notFound';
 
@@ -16,9 +16,7 @@ export class RootContainer extends Component {
     return (
       <App location={this.props.location}>
         <Switch>
-          <Route exact path="/" component={Home} />
-
-          <Route path="/contact" component={Contact} />
+          <Route exact path={`${config.basePath}/`} component={Home} />
 
           <Route component={NotFound} />
         </Switch>
